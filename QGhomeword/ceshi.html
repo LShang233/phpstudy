@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    ispassword("12345abc6");
+    function ispassword(password) {
+        var num = /.{6,18}/;
+        if (!num.test(password)) {
+            alert("请输入6-18位的密码！");
+        } else {
+            num = /^[0-9a-zA-Z_]{6,18}$/ig;
+            if (!num.test(password)) {
+                alert("非法字符输入！\n只能输入数字、英文字符以及‘_’");
+            }
+        }
+
+    }
+    /* isemail("aaa@qq.com");
+    function isemail(emailvalue) {
+    var num = /@?(.com)$/;
+    if (!num.test(emailvalue)) {
+        alert("请输入正确邮箱");
+    } */
+</script>
+
+</html>

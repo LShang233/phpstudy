@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn1">数据1</button>
+    <button id="btn2">数据2</button>
+</body>
+<script src="ajax.js"></script>
+<script>
+    /* document.getElementById("btn1").onclick = function() {
+        var xhr = null;
+        try{
+            xhr = new XMLHttpRequest();
+        }catch(error){
+            xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        xhr.open("get", "1.txt", true);
+
+        xhr.send();
+
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4){
+                alert(xhr.responseText);
+            }
+        }
+    } */
+
+    document.getElementById("btn1").onclick = function(){
+        $ajax({
+            url: "get.php",
+            data: {
+                username: "xxx",
+                password: "123abc"
+            },
+            success: function(result){
+                alert(result);
+            },
+            error: function(msg){
+                alert(msg);
+            }
+        })
+    }
+    document.getElementById("btn2").onclick = function(){
+        $ajax({
+            method: "post",
+            url: "post.php",
+            data: {
+                username: "xxx",
+                password: "123abc"
+            },
+            success: function(result){
+                alert(result);
+            },
+            error: function(msg){
+                alert(msg);
+            }
+        })
+    }
+</script>
+</html>

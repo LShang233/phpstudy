@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn1">下载数据</button>
+</body>
+<script src="ajax.js"></script>
+<script>
+    /* var arr = [100, true, "hello"];
+    alert(JSON.stringify(arr));
+
+    var str = '[100, true, "hello"]';
+    var arr = JSON.parse(str);
+    alert(arr); */
+
+    var btn = document.getElementById("btn1");
+    btn.onclick = function(){
+        $ajax({
+            method: "post",
+            url: "01.php",
+            success: function(result){
+                // alert(result);
+                /* var arr = JSON.parse(result);
+                for(var i = 0; i < arr.length; i++){
+                    alert(i + "," + arr[i]);
+                } */
+
+                var obj = JSON.parse(result);
+                alert(obj.username);
+            },
+            error: function(msg){
+                alert(msg);
+            }
+            
+        })
+    }
+</script>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h2>学生信息录入</h2>
+            </div>
+
+            <div class="panel-body">
+                <div class="form-group">
+                    <label for="name">姓名：</label>
+                    <input type="text" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="english">英语：</label>
+                    <input type="text" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="math">数学：</label>
+                    <input type="text" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="chinese">语文：</label>
+                    <input type="text" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <button id="submit" class="but btn-primary form-control">提交</button>
+                </div>
+            </div>
+
+            <div class="panel-footer">
+                <a href="link.html">查看成绩</a>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="ajax.js"></script>
+<script>
+    var submit = document.getElementById("submit");
+    var inputs = document.getElementsByTagName("input");
+    submit.onclick = function(){
+        $ajax({
+            method: "post",
+            url: "subit.php",
+            data: {
+                name: inputs[0].value,
+                english: inputs[1].value,
+                math: inputs[2].value,
+                chinese: inputs[3].value
+            },
+            success: function(result){
+                //alert(result);
+                var obj = JSON.parse(result);
+                alert(obj.message);
+            },
+            error: function(msg){
+                alert(msg);
+            }
+            
+        })
+    }
+</script>
+</html>
